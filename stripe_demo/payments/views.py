@@ -18,6 +18,9 @@ def item_detail(request, id):
 
 def buy_detail(request, id):
     item = get_object_or_404(Item, id=id)
+
+    base_url = request.build_absolute_uri('/')
+
     session = stripe.checkout.Session.create(
         line_items=[{
             'price_data': {
@@ -30,8 +33,8 @@ def buy_detail(request, id):
             'quantity': 1,
         }],
         mode='payment',
-        success_url='http://localhost:8000/success',
-        cancel_url='http://localhost:8000/cancel',
+        success_url=f'{base_url}/success',
+        cancel_url=f'{base_url}/cancel',
     )
 
     return JsonResponse(session)
