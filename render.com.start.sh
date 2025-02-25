@@ -14,21 +14,21 @@ user.set_password('password123')
 user.save()
 
 from payments.models import Item
-Item.objects.create(
+item1 = Item.objects.create(
      name="Example Item 1",
      description="This is an example item.",
      price=19.99,
      currency="USD"
 )
 
-Item.objects.create(
+item2 = Item.objects.create(
      name="Example Item 2",
      description="This is an example item.",
      price=11.99,
      currency="USD"
 )
 
-Item.objects.create(
+item3 = Item.objects.create(
      name="Example Item 3",
      description="This is an example item.",
      price=39.99,
@@ -36,17 +36,25 @@ Item.objects.create(
 )
 
 from payments.models import Discount
-Discount.objects.create(
+discount = Discount.objects.create(
      code="32LZkEGQ"
 )
 
 from payments.models import Tax
-Tax.objects.create(
+tax = Tax.objects.create(
      name="VAT",
      percentage="20",
      jurisdiction="US"
 )
 
+from payments.models import Order
+order = Order.objects.create(
+    currency="USD"
+)
+order.items.add(item1, item2)
+order.tax = tax
+order.discount = discount
+order.save()
 EOF
 
 echo "Starting server..."
