@@ -33,14 +33,21 @@ def buy_detail(request, id):
             'quantity': 1,
         }],
         mode='payment',
-        success_url=f'{base_url}/success',
-        cancel_url=f'{base_url}/cancel',
+        success_url=f'{base_url}success',
+        cancel_url=f'{base_url}cancel',
     )
 
     return JsonResponse(session)
 
+
 def success(request):
     return render(request, 'success.html')
 
+
 def cancel(request):
     return render(request, 'cancel.html')
+
+
+def index(request):
+    base_url = request.build_absolute_uri('/')
+    return render(request, 'index.html', {'base_url': base_url})

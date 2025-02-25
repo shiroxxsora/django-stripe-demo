@@ -17,12 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from payments.views import item_detail, buy_detail, success, cancel
+from payments.views import item_detail, buy_detail, success, cancel, index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('item/<int:id>', item_detail, name='item_detail'),
     path('buy/<int:id>', buy_detail, name='buy_detail'),
     path('success', success, name='success'),
-    path('cancel', cancel, name='cancel')
+    path('cancel', cancel, name='cancel'),
+    path('', index, name='index')
 ]

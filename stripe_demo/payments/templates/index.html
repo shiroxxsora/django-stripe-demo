@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>django-stripe-demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .admin-button {
+            display: inline-block;
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+        .admin-button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Welcome to django-stripe-demo</h1>
+        <p>Here are list of some test products:</p>
+
+        <div class="product">
+            <a href="{{ base_url }}item/1">Product 1</a>
+        </div>
+
+        <div class="product">
+            <a href="{{ base_url }}item/2">Product 2</a>
+        </div>
+
+        <div class="product">
+            <a href="{{ base_url }}item/3">Product 3</a>
+        </div>
+
+        <p>
+            You can add more in admin panel
+            <a href="/admin" class="admin-button">Go to Admin Panel</a>
+        </p>
+
+    </div>
+
+</body>
+</html>
