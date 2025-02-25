@@ -31,6 +31,7 @@ PORT = os.getenv('PORT')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+CSRF_TRUSTED_ORIGINS = ['localhost', '127.0.0.1', 'django-stripe-demo.onrender.com']
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'django-stripe-demo.onrender.com']
 
 
