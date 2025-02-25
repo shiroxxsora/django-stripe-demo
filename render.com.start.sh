@@ -34,6 +34,19 @@ Item.objects.create(
      price=39.99,
      currency="EUR"
 )
+
+from payments.models import Discount
+Discount.objects.create(
+     code="32LZkEGQ"
+)
+
+from payments.models import Tax
+Tax.objects.create(
+     name="VAT",
+     percentage="20",
+     jurisdiction="US"
+)
+
 EOF
 
 echo "Starting server..."

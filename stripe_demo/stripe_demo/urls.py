@@ -1,29 +1,15 @@
-"""
-URL configuration for stripe_demo project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/5.1/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.urls import path
 
-from payments.views import item_detail, buy_detail, success, cancel, index
+from payments.views import item_detail, buy_detail, success, cancel, index, order_detail, buy_order_detail
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('item/<int:id>', item_detail, name='item_detail'),
-    path('buy/<int:id>', buy_detail, name='buy_detail'),
-    path('success', success, name='success'),
-    path('cancel', cancel, name='cancel'),
-    path('', index, name='index')
+    path('item/<int:id>', item_detail),
+    path('buy/<int:id>', buy_detail),
+    path('success', success),
+    path('cancel', cancel),
+    path('', index),
+    path('order/<int:id>', order_detail),
+    path('buy_order/<int:id>', buy_order_detail)
 ]

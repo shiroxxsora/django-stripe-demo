@@ -1,0 +1,80 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy {{ item.name }}</title>
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eeeeee;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #27ae60;
+            margin-bottom: 25px;
+        }
+        #buy-button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            color: white;
+            background-color: #3498db;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        #buy-button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        {% for item in items %}
+        <h1>{{ item.name }}</h1>
+        <p>{{ item.description }}</p>
+        <p class="price">{{ item.price }} {{ item.currency }}</p>
+        <hr>
+        {% endfor %}
+        <button id="buy-button">Buy</button>
+    </div>
+
+    <script type="text/javascript">
+        var stripe = Stripe('{{ STRIPE_PUBLIC_KEY }}');
+        var buyButton = document.getElementById('buy-button');
+        buyButton.addEventListener('click', function() {
+            fetch('/buy_order/{{ order.id }}', {method: 'GET'})
+            .then(response => response.json())
+            .then(session => stripe.redirectToCheckout({ sessionId: session.id }))
+        });
+    </script>
+
+</body>
+</html>
