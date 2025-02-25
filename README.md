@@ -16,6 +16,8 @@
     STRIPE_PUBLIC_KEY = "ваш stripe pk"
     ```
 
+_Или вместо пункта 2 и 3 используйте переменные окружения вашей ос_
+
 4. Активируйте виртуальное окружение:
 
     - Для Windows:
@@ -57,11 +59,19 @@
     python stripe_demo/manage.py runserver
     ```
    
-На данном этапе у вас уже будет настроенное приложение. 
+На данном этапе у вас есть работающее приложение, соответствующее техническому заданию,  
+однако база данных пока пуста.  
+
+Чтобы ее заполнить можете перейти в админ панель [127.0.0.1:8000/admin](http://127.0.0.1:8000/admin) или [django-stripe-demo.onrender.com/admin](https://django-stripe-demo.onrender.com/admin)
+
+**Важное замечание**  
+В модели Discount поле code принимает ID купона, созданного на stripe.com. Убедитесь, что используете корректное значение.
 
 Опубликованная демка на render.com доступна по адресу: [django-stripe-demo.onrender.com](https://django-stripe-demo.onrender.com)
 
 Вы можете заполните базу данных через админ-панель: [django-stripe-demo.onrender.com/admin](https://django-stripe-demo.onrender.com/admin)
+
+Поидее тредностей не должно возникнуть, но ниже я сделал описание моделей.
 
 Логин и пароль я передал в сообщение на HH.ru
 
