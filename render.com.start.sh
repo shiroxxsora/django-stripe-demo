@@ -12,6 +12,28 @@ User = get_user_model()
 user = User.objects.get(username='root')
 user.set_password('password123')
 user.save()
+
+from payments.models import Item
+Item.objects.create(
+     name="Example Item 1",
+     description="This is an example item.",
+     price=19.99,
+     currency="USD"
+)
+
+Item.objects.create(
+     name="Example Item 2",
+     description="This is an example item.",
+     price=11.99,
+     currency="USD"
+)
+
+Item.objects.create(
+     name="Example Item 3",
+     description="This is an example item.",
+     price=39.99,
+     currency="EUR"
+)
 EOF
 
 echo "Starting server..."
